@@ -3,7 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const PORT = 3001;
+let notesArray = require("./db/db.json")
+const { uid } = require('uid')
 
+console.log(notesArray)
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,11 +30,12 @@ app.get("/api/notes", (req, res) => {
 
 app.post("/api/notes", (req, res) => {
   const { title, text } = req.body;
-
+  const id = uid();
   if (title && text) {
     let newNotes = {
       title,
       text,
+      id,
     };
     const notesString = JSON.stringify(newNotes);
 
@@ -61,5 +65,12 @@ app.post("/api/notes", (req, res) => {
     res.json(`Has to have title`);
   }
   console.log(req.body);
+});
+
+
+//whenever you create new id 
+app.delete("/api/notes/:id", function (req, res) {
+  console.log("req params", req.params.id);
+  notesArray = notesArray.filter(note => note.id !== req.params.id);
 });
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
