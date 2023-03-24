@@ -1,0 +1,25 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quailll/note-taker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Quailll/note-taker/issues"
+  },
+  "homepage": "https://github.com/Quailll/note-taker#readme"
+}
